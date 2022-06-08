@@ -1,4 +1,5 @@
 import nox
+from pathlib import Path
 
 nox.options.reuse_existing_virtualenvs = True
 
@@ -21,3 +22,13 @@ def build_live(session):
 def build(session):
     install_deps(session)
     session.run(*"bundle exec jekyll build".split())
+
+@nox.session(name="update-security-doc")
+def update_security_doc(session):
+    session.install("requests")
+
+    import requests
+    URL_SECURITY = "https://github.com/jupyter/security/raw/main/docs/vulnerability-handling.md"
+    resp = requests.get(URL_SECURITY)
+    includes = Path("_includes/security_protocol.md")
+    includes.write_text(resp.text)
