@@ -1,5 +1,6 @@
 import nox
 from pathlib import Path
+from textwrap import dedent
 
 nox.options.reuse_existing_virtualenvs = True
 
@@ -31,4 +32,15 @@ def update_security_doc(session):
     URL_SECURITY = "https://github.com/jupyter/security/raw/main/docs/vulnerability-handling.md"
     resp = requests.get(URL_SECURITY)
     includes = Path("_includes/security_protocol.md")
-    includes.write_text(resp.text)
+    text = dedent("""\
+    <!--
+      🛑🛑THIS IS A COPY, DO NOT PROPOSE CHANGES DO THIS FILE🛑🛑
+      The text here is copied from the URL below:
+      https://github.com/jupyter/security/raw/main/docs/vulnerability-handling.md
+
+      If you wish to make updates to this text, propose those changes in the security repository.
+      You may update the text below if it is copy-pasting updates from the security repo version.
+    -->
+
+    """)
+    includes.write_text(text + resp.text)

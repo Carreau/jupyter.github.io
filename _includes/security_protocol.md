@@ -1,3 +1,12 @@
+<!--
+  🛑🛑THIS IS A COPY, DO NOT PROPOSE CHANGES DO THIS FILE🛑🛑
+  The text here is copied from the URL below:
+  https://github.com/jupyter/security/raw/main/docs/vulnerability-handling.md
+
+  If you wish to make updates to this text, propose those changes in the security repository.
+  You may update the text below if it is copy-pasting updates from the security repo version.
+-->
+
 # Jupyter Vulnerability Handling Process
 
 This document summarizes and proposes guidelines for handling vulnerabilities reported in Jupyter projects. 
